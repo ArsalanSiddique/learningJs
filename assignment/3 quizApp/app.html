@@ -54,13 +54,26 @@
             question.innerText = quiz[quizNo].question;
             choices.innerHTML = "";
             for (var i = 0; i < quiz[quizNo].choice.length; i++) {
-                choices.appendChild(createLI(quiz[quizNo].choice[i]));
+                if(quiz[quizNo].type == 'radio')
+                    choices.appendChild(createLI_radio(quiz[quizNo].choice[i]));
+                else if(quiz[quizNo].type == 'checkbox')
+                    choices.appendChild(createLI_checkbox(quiz[quizNo].choice[i]));
             }
         }
 
-        function createLI(choice) {
+        function createLI_radio(choice) {
             var e = document.createElement('li');
-            var radioHtml = '<input type="radio" name="" value="'+ choice +'"';
+            var radioHtml = '<input type="radio" id="choiced" value="'+ choice +'"';
+            radioHtml += '/>';
+            radioHtml += choice;
+            e.innerHTML = radioHtml;
+
+            return e;
+        }
+        
+        function createLI_checkbox(choice) {
+            var e = document.createElement('li');
+            var radioHtml = '<input type="checkbox" id="choiced" value="'+ choice +'"';
             radioHtml += '/>';
             radioHtml += choice;
             e.innerHTML = radioHtml;
@@ -70,18 +83,23 @@
 
 
         next.onclick = function () {
-            if (i <= quiz.length) {
+            if (i <= quizLen) {
                 quizapp(i);
                 i++;
             } else {
-                alert('complete');
                 document.write("quizComplete");
             }
             if (i > 0)
                 next.innerText = 'Next';
             if (i == quiz.length)
                 next.innerText = 'Submit Quiz';
+
+            
+
+            //calculating result
+
         }
+
 
     </script>
 </body>
