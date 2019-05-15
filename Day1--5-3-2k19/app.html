@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .hideMe {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function popup(message) {
+            alert(message);
+        }
+
+        function checkAddress(emailAddress) {
+
+            if (document.getElementById(emailAddress).value === '') {
+                alert('email required');
+            }
+        }
+
+        function cityName() {
+            var city;
+            var zipEntered = document.getElementById('zipCode2').value;
+
+            switch (zipEntered) {
+                case "76800":
+                    city = 'Karachi';
+                    break;
+                case "76500":
+                    city = 'Hyderabad';
+                    break;
+            }
+            document.getElementById('cityName2').value = city;
+        }
+
+        function readMore() {
+            var para = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+            document.getElementById("expandMe").innerHTML = para;
+        }
+
+
+        function hideImg() {
+            document.getElementById("hidden").style.visibility = "hidden";
+        }
+
+        function visibleMe() {
+            var par = document.getElementsByTagName("p");
+            for (var i = 0; i < par.length; i++) {
+                par[i].style.fontFamily = "Verdana, Geneva, sans-serif";
+            }
+        }
+
+
+    </script>
+
+    <img src="button.png" onclick="alert('Hello Image')" alt="" width="50" height="50">
+    <a href="JavaScript:void(0)" onClick="popup('Hi');">Click</a>
+    <input type="button" value="CLick" onclick="alert('Hello Js.')">
+
+    <br>
+    <img src="button.png" onMouseover="src='button2.png'" alt="" width="50" height="50">
+
+    <h1 onmouseover="alert('Heelo World!')">Hello MouseOver</h1>
+    <br>
+    <a href="app.html" onmouseover="this.style.color='green'">I am Green, Hover Me</a>
+
+    <form action="" method="post">
+        <input type="email" name="email" style="background-color:red;" onmouseover="this.style.backgroundColor='Yellow'"
+            id="" placeholder="Hover me" />
+        <input type="email" name="email" style="background-color:orange;" onfocus="this.style.backgroundColor='green'"
+            id="" placeholder="Click Me" />
+        <input type="email" name="email" onfocus="this.style.backgroundColor='green'"
+            onblur="this.style.backgroundColor='white'" id="" placeholder="Click Me" />
+    </form>
+
+
+    <form action="" method="post" onSubmit="checkAddress('email');">
+        <fieldset>
+            <label for="Email">Email</label>
+
+            <input type="email" name="email" id="email" placeholder="@example.com" />
+            <label for="Zip Code"></label>
+            <input type="text" placeholder="ZIP code" name="zip" id="zipCode" onblur="cityName()" />
+            <label for="Country"></label>
+            <input type="text" placeholder="City" name="city" id="cityName" />
+
+            <input type="submit" value="Submit" /></fieldset>
+    </form>
+
+    <br>
+    <form action="" method="post">
+        <fieldset>
+
+            <label for="Zip Code"></label>
+            <input type="text" placeholder="ZIP code" name="zip" id="zipCode2" onblur="cityName()" />
+            <label for="Country"></label>
+            <input type="text" placeholder="City" name="city" id="cityName2" />
+
+            <input type="submit" value="Submit" /></fieldset>
+    </form>
+    <br>
+
+    <p id="expandMe">This is First Para. <a href="javascript:void(0);" onclick="readMore()">Read More</a> </p>
+
+    <br>
+
+    <img src="button.png" alt="button" id="hidden" onclick="hideImg()" width="50" height="50">
+
+
+    <p>This is Second Para</p>
+    <p>This is Third Para</p>
+    <p>This is Fourth Para</p>
+    <br>
+    <a href="javascript:void(0);" onclick="visibleMe()">Change Font Size</button>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>calculateNodes</title>
+</head>
+
+<body>
+
+
+    <div id="myNodes">
+
+        <p>First</p>
+        <p>second</p>
+        <p>third</p>
+        <p>fourth</p>
+        <p>fifth</p>
+
+        <h1>one</h1>
+        <h1>two</h1>
+        <h1>three</h1>
+
+        <a href="#">one</a>
+        <a href="#">two</a>
+
+    </div>
+
+    <p id="resultShow" class="Shah" onclick="Kami();"></p>
+
+    <script>
+
+        var d2 = document.getElementById("resultShow").attributes;
+        var d2List = d2.length;
+        var d2Name = d2[0].nodeName;
+        var d2Value = d2[0].nodeValue;
+
+        alert(d2List);
+        alert(d2Name);
+        alert(d2Value);
+
+        var parent = document.getElementById('myNodes');
+        var element = document.createElement("p");
+        var txtNodes = document.createTextNode("Hello Paragraph");
+        element.appendChild(txtNodes);
+        parent.appendChild(element);
+
+        var parent = document.getElementById("myNodes");
+        var element = document.createElement("p");
+        var txtNodes = document.createTextNode("Hello world!");
+        element.appendChild(txtNodes);
+        parent.appendChild(element);
+        
+        // var d2 = document.getElementById("myNodes").childNodes.length;
+        // alert(d2);
+
+        // var d2 = document.getElementById("myNodes").hasAttribute("class");
+        // alert(d2);
+
+        // var d2 = document.getElementById("myNodes").setAttribute("class", "SHAH");
+        // alert(d2);
+
+        // var d2 = document.getElementById("myNodes").getAttribute("id");
+        // alert(d2);
+
+        var d = document.getElementById("myNodes");
+        var para = 0;
+        var hTags = 0;
+        var aTags = 0;
+
+        for (var i = 0; i < d.childNodes.length; i++) {
+
+            if (d.childNodes[i].nodeName === 'P') {
+                para++;
+            } else if (d.childNodes[i].nodeName === 'H1') {
+                hTags++;
+            } else if (d.childNodes[i].nodeName === 'A') {
+                aTags++;
+            }
+
+        }
+        document.getElementById("resultShow").innerHTML = para + ' - ' + hTags + ' - ' + aTags;
+
+    </script>
+
+</body>
+
+</html>

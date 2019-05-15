@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=100%, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Objetcs</title>
+</head>
+
+<body>
+
+    <h1 id="details"></h1>
+
+    <script>
+
+        var plan1 = {
+            name: "basic",
+            price: 100,
+            bandwidth: "unlimited",
+            emial: 2,
+            discountMonths: [5, 12],
+            calcAnnual: function (discount) {
+                var newPrice = this.price;
+                var newDate = new Date();
+                var thisMonth = newDate.getMonth() + 1;
+
+                for (var i = 0; i < this.discountMonths.length; i++) {
+
+                    if (thisMonth === plan1.discountMonths[i]) {
+                        var newPrice = newPrice * discount;
+                        break;
+                    }
+                }
+
+                return newPrice * 12;
+            }
+
+        };
+
+        var data = document.getElementById("details").innerHTML = ' Name: ' + plan1.name + ' - Price: ' + plan1.price * 12 + ', New Price: ' + plan1.calcAnnual(.10);
+
+
+    </script>
+</body>
+
+</html>

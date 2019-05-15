@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="myNode">
+        <p>First Paragraph</p>
+        <p>Second Paragraph</p>
+        <p>Third Paragraph</p>
+        <div>
+            <h1>Hello</h1>
+        </div>
+    </div>
+    <div>
+        <h1>First Heading</h1>
+        <h1>Second Heading</h1>
+    </div>
+    
+    <button onclick="changeTxt()">Change Text</button>
+  
+    <script>
+        
+        function changeTxt() {
+            var d = document.getElementById("myNode");
+            var counter;
+            for (var i = 0; i < d.childNodes.length; i++) {
+                if (d.childNodes[i].nodeType === 1) {
+
+                    if(document.getElementsByTagName("p").length === 1) {
+                        counter++;
+                    }
+                    
+                }
+            }
+            console.log(counter);
+        }
+
+    </script>
+
+</body>
+</html>

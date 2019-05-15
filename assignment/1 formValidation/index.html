@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AAs formValidation</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <h1>Join My Community</h1>
+    <br>
+    <form class="form-group col-md-4 thumbnail" action="" method="post" onSubmit="formChecking();">
+        <label for="name">Enter Name:</label>
+        <input type="text" class="form-control" name="myName" id="name" placeholder="Enter Name" />
+
+        <label for="email">Enter Email:</label>
+        <input type="email" class="form-control" name="myEmail" id="email" placeholder="Enter Email" />
+
+        <label for="password">Enter Password:</label>
+        <input type="password" class="form-control" name="myPwd" id="password" placeholder="Enter Password" />
+
+        <input type="submit" value="Submit" class="btn btn-success pull-right" id="Submit" />
+    </form>
+
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    <script>
+        function formChecking() {
+            var email = document.getElementById("email");
+            var name = document.getElementById("name");
+            var pass = document.getElementById("password");
+
+            if(email.value === '') {
+                alert('enter your email');
+            }else if(name.value === '') {
+                alert('enter your good name');
+            }else if(pass.value === '') {
+                alert('enter your password');
+            }else {
+                alert('Successfully Joined.');
+            }
+
+        }
+    </script>
+</body>
+
+</html>

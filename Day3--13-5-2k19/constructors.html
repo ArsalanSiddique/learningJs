@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=100%, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Construct.</title>
+</head>
+<body>
+    
+
+
+
+    <script>
+    //this function is called constructor function
+
+        function plan(name, price, bandwidth, email, months) {
+            this.name = name;
+            this.price = price;
+            this.bandwidth = bandwidth;
+            this.email = email;
+            this.discountMonths = months;
+            
+            //discountPercent is the parameter of calcAnnual method.
+            this.calcAnnual = function (discountPercent) { 
+                var newPrice = this.price;
+                var newDate = new Date();
+                var thisMonth = newDate.getMonth() + 1;
+
+                for (var i = 0; i < this.discountMonths.length; i++) {
+
+                    if (thisMonth === plan1.discountMonths[i]) {
+                        var newPrice = newPrice * discount;
+                        break;
+                    }
+                }
+
+                return newPrice * 12;
+            }
+        }
+
+        var plan1 = new plan("Silver", 100, '100GB', 2, [1,12]);
+        var plan2 = new plan("Gold", 550, 'Unlimited', 10, 0.20, [1,7,12]);
+        var plan3 = new plan("Platinum", 720, 'Unlimited', 'Unlimited', 0.30, [1,7,12]);
+
+
+        document.write(plan1.calcAnnual(0.10)+'<br />');
+        document.write(plan2.calcAnnual(0.10)+'<br />');
+        document.write(plan3.calcAnnual(0.10)+'<br />');
+    
+    </script>
+</body>
+</html>

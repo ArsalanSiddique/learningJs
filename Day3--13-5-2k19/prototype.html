@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=100%, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prototype</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        function plan(name, price, bandwidth, email, months) {
+            this.name = name;
+            this.price = price;
+            this.bandwidth = bandwidth;
+            this.email = email;
+            this.discountMonths = months;
+        }
+        plan.prototype.calcAnnual = function (discountPercent) {
+            var newPrice = this.price;
+            var newDate = new Date();
+            var thisMonth = newDate.getMonth() + 1;
+
+            for (var i = 0; i < this.discountMonths.length; i++) {
+
+                if (thisMonth === plan1.discountMonths[i]) {
+                    var newPrice = newPrice * discount;
+                    break;
+                }
+            }
+
+            return newPrice * 12;
+        }
+
+
+        var plan1 = new plan("Silver", 100, '100GB', 2, [1, 12]);
+        var plan2 = new plan("Gold", 550, 'Unlimited', 10, [1, 7, 12]);
+        var plan3 = new plan("Platinum", 720, 'Unlimited', 'Unlimited', [1, 7, 12]);
+
+
+        document.write(plan1.calcAnnual(0.10) + '<br />');
+        document.write(plan2.calcAnnual(0.10) + '<br />');
+        document.write(plan3.calcAnnual(0.10) + '<br />');
+
+
+
+
+
+        //If you want a list of an object's properties
+        var listOfProperties = [];
+        for (var prop in plan1) {
+            listOfProperties.push(prop);
+        }
+        alert(listOfProperties);
+
+
+        var listOfProperties2 = [];
+        for (var prop2 in plan2) {
+            if (plan2.hasOwnProperty(prop2)) {
+                listOfProperties2.push(prop2);
+            }
+        }
+        alert(listOfProperties2);
+    </script>
+
+</body>
+
+</html>

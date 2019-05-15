@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="myNode">
+        <p>First Paragraph</p>
+        <p>Second Paragraph</p>
+        <p>Third Paragraph</p>
+        <div>
+            <h1>Hello</h1>
+        </div>
+    </div>
+    <div>
+        <h1>First Heading</h1>
+        <h1>Second Heading</h1>
+    </div>
+    <button onclick="myFunction()">Count Node Type</button>
+    <button onclick="changeTxt()">Change Text</button>
+    <p id="demo"></p>
+    <p id="demo2"></p>
+
+    <script>
+        function myFunction() {
+            var number = document.getElementById("myNode").nodeType;
+            document.getElementById("demo").innerHTML = number;
+            var length = document.getElementById("myNode").childNodes.length;
+            document.getElementById("demo2").innerHTML = length;
+        }
+
+        function changeTxt() {
+            var counter = 0;
+            var arr = [];
+            var d = document.getElementById("myNode");
+
+            for (var i = 0; i < d.childNodes.length; i++) {
+                if (d.childNodes[i].nodeType === 1) {
+                    counter++;
+
+                    console.log(d.childNodes.innerHTML);
+                }
+                if (counter === 4) {
+                    d.childNodes[i].innerHTML = "<h1>Fnakari<h1>";
+                }
+            }
+            console.log(counter);
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>
