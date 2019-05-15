@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=100%, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>quiz App</title>
+</head>
+
+<body>
+
+
+    <h1 id="quizQuestion"></h1>
+    <ul id="quizChoices"></ul>
+
+
+    <button type="button" id="nextQuestion"> Start Quiz </button>
+
+    <script>
+        var quiz = [
+
+            {
+                question: "which one is inwords counting",
+                choice: ['one', '2', 'iii'],
+                answer: 1,
+                type: "radio"
+            },
+            {
+                question: "Check all inwords counting",
+                choice: ['one', '2', 'iii', 'four'],
+                answer: [1,4],
+                type: "checkbox"
+            },
+            {
+                question: "HTML stand for?",
+                choice: ['Hyper Text Markup Language', 'Hyper Text market Language', 'Hyper Type Markup Language'],
+                answer: 1,
+                type: "radio"
+            }
+        ]
+
+
+        var i = 0;
+        var quizLen = quiz.length - 1;
+        var correctAnswer = 0;
+
+        var question = document.getElementById("quizQuestion");
+        var choices = document.getElementById("quizChoices");
+        var next = document.getElementById("nextQuestion");
+
+        function quizapp(quizNo) {
+
+            question.innerText = quiz[quizNo].question;
+            choices.innerHTML = "";
+            for (var i = 0; i < quiz[quizNo].choice.length; i++) {
+                choices.appendChild(createLI(quiz[quizNo].choice[i]));
+            }
+        }
+
+        function createLI(choice) {
+            var e = document.createElement('li');
+            var radioHtml = '<input type="radio" name="" value="'+ choice +'"';
+            radioHtml += '/>';
+            radioHtml += choice;
+            e.innerHTML = radioHtml;
+
+            return e;
+        }
+
+
+        next.onclick = function () {
+            if (i <= quiz.length) {
+                quizapp(i);
+                i++;
+            } else {
+                alert('complete');
+                document.write("quizComplete");
+            }
+            if (i > 0)
+                next.innerText = 'Next';
+            if (i == quiz.length)
+                next.innerText = 'Submit Quiz';
+        }
+
+    </script>
+</body>
+
+</html>
