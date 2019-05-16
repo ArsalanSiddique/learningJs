@@ -53,17 +53,18 @@
 
             question.innerText = quiz[quizNo].question;
             choices.innerHTML = "";
+            var radioBtnName = "Q"+quizNo+'_choice';
             for (var i = 0; i < quiz[quizNo].choice.length; i++) {
                 if(quiz[quizNo].type == 'radio')
-                    choices.appendChild(createLI_radio(quiz[quizNo].choice[i]));
+                    choices.appendChild(createLI_radio(radioBtnName, quiz[quizNo].choice[i]));
                 else if(quiz[quizNo].type == 'checkbox')
-                    choices.appendChild(createLI_checkbox(quiz[quizNo].choice[i]));
+                    choices.appendChild(createLI_checkbox(radioBtnName, quiz[quizNo].choice[i]));
             }
         }
 
-        function createLI_radio(choice) {
+        function createLI_radio(name, choice) {
             var e = document.createElement('li');
-            var radioHtml = '<input type="radio" id="choiced" value="'+ choice +'"';
+            var radioHtml = '<input type="radio" id="choiced" name="'+ name +'" value="'+ choice +'"';
             radioHtml += '/>';
             radioHtml += choice;
             e.innerHTML = radioHtml;
@@ -71,7 +72,7 @@
             return e;
         }
         
-        function createLI_checkbox(choice) {
+        function createLI_checkbox(name, choice) {
             var e = document.createElement('li');
             var radioHtml = '<input type="checkbox" id="choiced" value="'+ choice +'"';
             radioHtml += '/>';
