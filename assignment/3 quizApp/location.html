@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <p>Quiz Title: Web development</p>
+        <p>Time: 45 mins</p>
+        <p>Total Question: 26</p>
+        <p>No. of attempts: 1</p>
+        <button type="button" id="startQuiz"> Start Quiz </button>
+
+    <script>
+        var start = document.getElementById("startQuiz");
+        start.onclick = function () {
+            window.location.assign("quiz.html"); 
+        }
+
+    </script>
+</body>
+</html>

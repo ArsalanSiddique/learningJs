@@ -15,7 +15,7 @@
     <ul id="quizChoices"></ul>
 
 
-    <button type="button" id="nextQuestion"> Start Quiz </button>
+    <button type="button" id="nextQuestion"> Next </button>
 
     <script>
         var quiz = [
@@ -41,7 +41,7 @@
         ]
 
 
-        var i = 0;
+        var i = 1; // 1 is just for quiz 2nd question.
         var quizLen = quiz.length - 1;
         var correctAnswer = 0;
 
@@ -83,22 +83,23 @@
             return e;
         }
 
+
+
         next.onclick = function () {
             if (i <= quizLen) {
                 quizapp(i);
                 i++;
             } else {
-                document.write("quizComplete");
+                document.write('quizComplete - result calculation is under construction.');
+                
             }
-            if (i > 0)
-                next.innerText = 'Next';
             if (i == quiz.length)
                 next.innerText = 'Submit Quiz';
 
             //calculating result of quiz
 
-            var quizAnswer = document.getElementById(radioBtnName).nodeValue;
-            alert(quizAnswer)
+            // var quizAnswer = document.getElementById(radioBtnName).nodeValue;
+            // alert(quizAnswer)
             // alert(quiz[quizNo].choice[quizAnswer])
             // if (quizAnswer === quiz[quizNo].choice[quizAnswer]) {
             //     alert('TRUE');
@@ -107,6 +108,7 @@
             // }
 
         }
+
 
         //timer function start here
         function countdown(minutes) {
@@ -127,12 +129,17 @@
                 }
                 if (current_minutes === 0 && seconds === 0) {
                     alert('Time Completed!');
+                    question.innerText = '';
+                    choices.innerText = '';
+                    next.innerHTML = '';
                 }
             }
             tick();
         }
 
-        countdown(2);
+
+        quizapp(0); // 0 is just for print 1st quiz question
+        countdown(1);
     </script>
 </body>
 

@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 <p id="counter"></p>
+
 <body>
     <script>
 
@@ -15,7 +16,7 @@
             var seconds = 60;
             var mins = minutes
             function tick() {
-                
+
                 var counter = document.getElementById("counter");
                 var current_minutes = mins - 1
                 seconds--;
@@ -26,15 +27,15 @@
                     if (mins > 1) {
                         countdown(mins - 1);
                     }
-                    if (mins === 0) {
-                        alert('Time Completed!');
-                    }
+                }
+                if (current_minutes === 0 && seconds === 0) {
+                    alert('Time Completed!');
                 }
             }
             tick();
         }
-        
-        countdown(1);//where n is the number of minutes required.     
+
+        countdown(1);   //where n is the number of minutes required.     
 
 
     </script>
