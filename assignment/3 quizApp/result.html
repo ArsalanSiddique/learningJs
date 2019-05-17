@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="radio" id="choiced" name="q0choice" value="one" />one
+    <input type="radio" id="choiced" name="q0choice" value="Two" />Two
+    <input type="radio" id="choiced" name="q0choice" value="Three" />Three <br />
+
+    <button type="submit" id="mybtn">Next</button>
+
+    <script>
+
+
+        var next = document.getElementById("mybtn");
+        next.onclick = function () {
+
+            if (document.getElementById('choiced').checked) {
+                ans = document.getElementById('choiced').value;
+                alert('selected');
+            }else {
+                alert('!selected');
+
+            }
+            // var ans = document.getElementsByName("q0choice").values;
+            alert(ans);
+        }
+
+    </script>
+
+
+</body>
+
+</html>
