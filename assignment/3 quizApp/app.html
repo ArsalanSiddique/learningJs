@@ -97,14 +97,24 @@
 
             //calculating result of quiz
 
-            var quizAnswer = document.getElementById(radioBtnName).nodeValue;
-            alert(quizAnswer)
-            // alert(quiz[quizNo].choice[quizAnswer])
-            // if (quizAnswer === quiz[quizNo].choice[quizAnswer]) {
-            //     alert('TRUE');
-            // } else {
-            //     alert('FALSE');
-            // }
+            // var quizAnswer = document.getElementById(radioBtnName).nodeValue;
+            // alert(quizAnswer)
+            // // alert(quiz[quizNo].choice[quizAnswer])
+            // // if (quizAnswer === quiz[quizNo].choice[quizAnswer]) {
+            // //     alert('TRUE');
+            // // } else {
+            // //     alert('FALSE');
+            // // }
+                //another way for calculating by stackoverflow
+    
+            
+                const radios = document.getElementsByName('Q0_choice');
+                radios.forEach((radio) => {
+                    if (radio.checked) {
+                        console.log(radio.value);
+                    }
+                })
+            
 
         }
 

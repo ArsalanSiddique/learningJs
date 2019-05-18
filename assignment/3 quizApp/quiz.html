@@ -18,8 +18,8 @@
     <button type="button" id="nextQuestion"> Next </button>
 
     <script>
-        var quiz = [
 
+        var quiz = [
             {
                 question: "which one is inwords counting",
                 choice: ['one', '2', 'iii'],
@@ -68,11 +68,6 @@
 
             function checkAns() {
 
-                var ans = document.getElementById('choiced').Value;
-                answers.push(ans);
-
-                count = count + 5;
-                alert('runn');
             }
 
         }
@@ -81,12 +76,12 @@
 
             //enable next question button after selecting option
             document.getElementById('nextQuestion').disabled = false;
-
+            checkAns();
         }
 
         function createLI_radio(name, choice) {
             var e = document.createElement('li');
-            var radioHtml = '<input type="radio" onfocus="enableBtn(); checkAns()" id="choiced" name="' + name + '" value="' + choice + '"';
+            var radioHtml = '<input type="radio" onfocus="enableBtn()" id="" name="' + name + '" value="' + choice + '"';
             radioHtml += '/>';
             radioHtml += choice;
             e.innerHTML = radioHtml;
@@ -96,7 +91,7 @@
 
         function createLI_checkbox(name, choice) {
             var e = document.createElement('li');
-            var radioHtml = '<input type="checkbox" onfocus="enableBtn(); checkAns()" id="choiced" value="' + choice + '"';
+            var radioHtml = '<input type="checkbox" onfocus="enableBtn()" id="" value="' + choice + '"';
             radioHtml += '/>';
             radioHtml += choice;
             e.innerHTML = radioHtml;
@@ -109,10 +104,8 @@
         next.onclick = function () {
 
             if (i <= quizLen) {
-
-                if (document.getElementById('choiced').checked) {
-                    ans = document.getElementById('choiced').value;
-                }
+                var ans = document.getElementsByName('Q0_choice').Value;
+                alert(ans);
 
                 quizapp(i);
                 i++;
@@ -158,7 +151,7 @@
 
 
         quizapp(0); // 0 is just for print 1st quiz question
-        countdown(1);
+        countdown(1); // 1 for 1 mins
 
     </script>
 </body>

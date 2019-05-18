@@ -22,7 +22,8 @@
         next.onclick = function () {
 
             if (document.getElementById('choiced').checked) {
-                ans = document.getElementById('choiced').value;
+                ans = document.getElementsByName('q0choice').values;
+                alert(ans);
                 alert('selected');
             }else {
                 alert('!selected');
