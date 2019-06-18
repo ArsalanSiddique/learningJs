@@ -8,7 +8,7 @@
     <title>quiz App</title>
 </head>
 
-<body>
+<body onkeydown="return (event.keyCode != 116)">
 
     <p id="counter"></p>
     <h1 id="quizQuestion"></h1>
@@ -23,7 +23,7 @@
             {
                 question: "which one is inwords counting",
                 choice: ['one', '2', 'iii'],
-                answer: 1,
+                answer: '1',
                 type: "radio"
             },
             {
@@ -41,7 +41,8 @@
         ]
 
 
-        var i = 1; // 1 is just for quiz 2nd question.
+        var j = 1; // 1 is just for show next quiz ( 2nd question )
+        var k = 0; // index No. for storing selected answer of user
         var quizLen = quiz.length - 1;
         var correctAnswer = 0;
         var count = 0;
@@ -58,7 +59,8 @@
 
             question.innerText = quiz[quizNo].question;
             choices.innerHTML = "";
-            var radioBtnName = "Q" + quizNo + '_choice';
+            var radioBtnName = 'Q' + quizNo + '_choice';
+            
             for (var i = 0; i < quiz[quizNo].choice.length; i++) {
                 if (quiz[quizNo].type == 'radio')
                     choices.appendChild(createLI_radio(radioBtnName, quiz[quizNo].choice[i]));
@@ -66,22 +68,28 @@
                     choices.appendChild(createLI_checkbox(radioBtnName, quiz[quizNo].choice[i]));
             }
 
-            function checkAns() {
-
-            }
-
+        }
+        
+        var selectedAnswer = document.getElementsByName('Q0_choice').Value;
+        alert(selectedAnswer);
+        
+        
+        function checkAns(selectedAnswer) {
+            //alert(selectedAnswer);
         }
 
-        function enableBtn() {
-
+        function enableBtn(choice) {
+            alert(choice);
             //enable next question button after selecting option
             document.getElementById('nextQuestion').disabled = false;
-            checkAns();
+
+            // var selectedAnswer = document.getElementsByName('Q0_choice').Value;
+            // checkAns(selectedAnswer);
         }
 
         function createLI_radio(name, choice) {
             var e = document.createElement('li');
-            var radioHtml = '<input type="radio" onfocus="enableBtn()" id="" name="' + name + '" value="' + choice + '"';
+            var radioHtml = '<input type="radio" onfocus="{enableBtn('+ choice +')}" id="quizTime" name="' + name + '" value="' + choice + '"';
             radioHtml += '/>';
             radioHtml += choice;
             e.innerHTML = radioHtml;
@@ -91,7 +99,7 @@
 
         function createLI_checkbox(name, choice) {
             var e = document.createElement('li');
-            var radioHtml = '<input type="checkbox" onfocus="enableBtn()" id="" value="' + choice + '"';
+            var radioHtml = '<input type="checkbox" onfocus="enableBtn()" id="quizTime" name="' + name + '" value="' + choice + '"';
             radioHtml += '/>';
             radioHtml += choice;
             e.innerHTML = radioHtml;
@@ -103,24 +111,29 @@
 
         next.onclick = function () {
 
-            if (i <= quizLen) {
-                // var ans = document.getElementsByName('Q0_choice').Value;
-                // alert(count);
+            if (j <= quizLen) {
 
-                quizapp(i);
-                i++;
+                
+                quizapp(j);
+                j++;
             } else {
-                document.write('quizComplete - result calculation is under construction.');
+
+                resultShow(count, correctAnswer);
+
+            }
+            if (j == quiz.length)
+                next.innerText = 'Submit Quiz';
+        }
+
+        function resultShow(count, correctAnswer) {
+            document.write('quizComplete - result calculation is under construction.');
 
                 //printing result
                 console.log(answers);
                 document.write('<br />Marks: ' + count);
-                document.write('<br />Correct Answer' + correctAnswer);
-            }
-            if (i == quiz.length)
-                next.innerText = 'Submit Quiz';
-        }
+                document.write('<br />Correct Answer: ' + correctAnswer);
 
+        }
 
         //timer function start here
         function countdown(minutes) {
@@ -141,9 +154,12 @@
                 }
                 if (current_minutes === 0 && seconds === 0) {
                     alert('Time Completed!');
-                    question.innerText = '';
-                    choices.innerText = '';
-                    next.innerHTML = '';
+                    // question.innerText = '';
+                    // choices.innerText = '';
+                    // next.innerHTML = '';     no need to do this just call the fn of result
+                    resultShow(count, correctAnswer);
+
+
                 }
             }
             tick();
@@ -151,7 +167,7 @@
 
 
         quizapp(0); // 0 is just for print 1st quiz question
-        countdown(1); // 1 for 1 mins
+        countdown(50); // 1 for 1 mins
 
     </script>
 </body>
